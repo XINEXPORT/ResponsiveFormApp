@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+    <link href="~/lib/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.rtl.css" rel="stylesheet" />
+    <link href="~/lib/bootstrap/css/bootstrap.rtl.min.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        @RenderBody()
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+
+    <script>
+        function launchConfetti() {
+            confetti({
+                particleCount: 500,
+                spread: 200,
+                origin: { x: 0.5, y: 0.5 },
+                scalar: 1.2,
+            });
+        }
+
+        document.querySelector('button[type="submit"]').addEventListener('click', function (event) {
+            event.preventDefault();
+            launchConfetti();
+
+            setTimeout(function () {
+                event.target.closest('form').submit(); 
+            }, 500);
+        });
+    </script>
+</body>
+</html>
